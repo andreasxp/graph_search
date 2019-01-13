@@ -1,5 +1,5 @@
 #pragma once
-#include "level_builder/build_result.hpp"
+#include "build_result.hpp"
 
 template<class T>
 inline void build_result<T>::add(const sector<T>& rslt) {

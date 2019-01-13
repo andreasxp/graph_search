@@ -1,6 +1,6 @@
 #pragma once
-#include "functors/sector_functors.hpp"
-#include "node_group.hpp"
+#include "sector_functors.hpp"
+#include "../node_group.hpp"
 
 template<class T>
 inline bool sector_lexicographical_order<T>::operator()(sector<T> const & lhs, sector<T> const & rhs) const {

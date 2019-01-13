@@ -1,5 +1,5 @@
 #pragma once
-#include "level_builder/level_builder_mthread.hpp"
+#include "level_builder_mthread.hpp"
 #include "deps/zh/iterator.hpp"
 
 template<class T>

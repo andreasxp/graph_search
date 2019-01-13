@@ -13,7 +13,7 @@ graph<T>::find(typename node<T>::id_type id) {
 	// Such action results in undefined behaviour.
 	GS_ASSERT(id != 0);
 
-	pseudonode<T> key(*this, id);
+	pseudonode<T> key(id);
 	auto got = m_nodes.find(key.imitator());
 
 	return node_iterator(got);
@@ -27,8 +27,16 @@ graph<T>::find(typename node<T>::id_type id) const {
 	// Such action results in undefined behaviour.
 	GS_ASSERT(id != 0);
 
-	pseudonode<T> key(*this, id);
+	pseudonode<T> key(id);
 	auto got = m_nodes.find(key.imitator());
+
+	/*std::cout << "Looking for " << id << " in:\n";
+	for (auto&& nd : nodes()) {
+		std::cout << "    " << nd.id() << "\n";
+	}
+	std::cout << "Answer: " <<
+		(got == m_nodes.end() ? "not found" : "found") << std::endl;*/
+
 
 	return const_node_iterator(got);
 }
@@ -123,7 +131,19 @@ graph<T>::nodes() const noexcept {
 }
 
 template<class T>
-inline void graph<T>::connect(node_type& n1, node_type& n2) {
+inline typename graph<T>::node_iterator 
+graph<T>::to_node_iterator(typename node<T>::node_iterator iter) noexcept {
+	return find(iter->id());
+}
+
+template<class T>
+inline typename graph<T>::const_node_iterator 
+graph<T>::to_node_iterator(typename node<T>::const_node_iterator iter) const noexcept {
+	return find(iter->id());
+}
+
+template<class T>
+inline void graph<T>::connect(node<T>& n1, node<T>& n2) {
 	if (n1.id() == n2.id()) throw std::invalid_argument("graph::connect: cannot connect node to itself");
 	n1.bi_connect(n2);
 }
@@ -139,7 +159,7 @@ inline void graph<T>::connect(node_iterator it1, node_iterator it2) {
 }
 
 template<class T>
-inline void graph<T>::disconnect(node_type& n1, node_type& n2) {
+inline void graph<T>::disconnect(node<T>& n1, node<T>& n2) {
 	n1.bi_disconnect(n2);
 }
 
@@ -199,7 +219,7 @@ inline void graph<T>::insert(std::initializer_list<value_type> ilist) {
 template<class T>
 template<class... Args>
 inline typename graph<T>::iterator graph<T>::emplace(Args&&... args) {
-	return iterator(m_nodes.emplace(*this, std::forward<Args>(args)...)
+	return iterator(m_nodes.emplace(std::forward<Args>(args)...)
 		.first);
 }
 
@@ -219,7 +239,7 @@ graph<T>::erase(node_iterator it) {
 		nd.fw_disconnect(*it);
 	}
 
-	return node_iterator(m_nodes.erase(it.get_iterator));
+	return node_iterator(m_nodes.erase(it.get_iterator()));
 }
 
 template<class T>

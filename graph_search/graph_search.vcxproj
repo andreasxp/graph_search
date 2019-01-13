@@ -198,15 +198,9 @@
     <ClInclude Include="deps\zh\type_traits\remove_all_pointers.hpp" />
     <ClInclude Include="include\benchmark.hpp" />
     <ClInclude Include="include\graph_search\functors\node_functors.hpp" />
-    <ClInclude Include="include\graph\node\const_nodes_view.hpp" />
-    <ClInclude Include="include\graph\node\const_node_iterator.hpp" />
     <ClInclude Include="include\graph\node\nodes_view.hpp" />
     <ClInclude Include="include\graph\node\node_iterator.hpp" />
-    <ClInclude Include="include\graph\node\node_lookup.hpp" />
     <ClInclude Include="include\graph.hpp" />
-    <ClInclude Include="include\graph\const_iterator.hpp" />
-    <ClInclude Include="include\graph\const_nodes_view.hpp" />
-    <ClInclude Include="include\graph\const_node_iterator.hpp" />
     <ClInclude Include="include\graph\iterator.hpp" />
     <ClInclude Include="include\graph\nodes_view.hpp" />
     <ClInclude Include="include\graph\node_iterator.hpp" />
@@ -245,10 +239,7 @@
     <None Include="deps\zh\deriveale_ptr.inl" />
     <None Include="deps\zh\iterator.inl" />
     <None Include="deps\zh\proxy_iterator.inl" />
-    <None Include="include\graph\const_iterator.inl" />
-    <None Include="include\graph\const_node_iterator.inl" />
     <None Include="include\graph\iterator.inl" />
-    <None Include="include\graph\node\const_node_iterator.inl" />
     <None Include="include\graph\node\node_functors.inl" />
     <None Include="include\graph\node\node_iterator.inl" />
     <None Include="include\graph\node_iterator.inl" />
@@ -261,7 +252,6 @@
     <None Include="include\graph_search\level_builder\level_builder_1thread.inl" />
     <None Include="include\graph\node\node.inl" />
     <None Include="include\graph_search\functors\node_functors.inl" />
-    <None Include="include\graph\node\node_lookup.inl" />
     <None Include="include\graph\node\pseudonode.inl" />
     <None Include="include\graph_search\puff.inl" />
     <None Include="include\report\report.inl" />

@@ -3,16 +3,6 @@
 #include "util/pretty_print.hpp"
 
 template<class T>
-inline bool node<T>::const_node_iterator::is_valid() const noexcept {
-	return (*this) != base::get_functor().get_node().adjacent_nodes().end();
-}
-
-template<class T>
-inline node<T>::const_node_iterator::operator bool() const noexcept {
-	return is_valid();
-}
-
-template<class T>
 inline T& node<T>::value() {
 	return *m_value;
 }
@@ -24,7 +14,7 @@ inline const T& node<T>::value() const {
 
 template<class T>
 inline void node<T>::fw_connect(const node& n) {
-	m_edges.emplace(n.id());
+	m_edges.emplace(&n);
 }
 
 template<class T>
@@ -35,7 +25,7 @@ inline void node<T>::bi_connect(node& n) {
 
 template<class T>
 inline void node<T>::fw_disconnect(const node& n) {
-	m_edges.erase(n.id());
+	m_edges.erase(&n);
 }
 
 template<class T>
@@ -50,39 +40,27 @@ inline typename node<T>::id_type node<T>::id() const noexcept {
 }
 
 template<class T>
-inline graph<T>& node<T>::owner() noexcept {
-	return m_owner;
-}
-
-template<class T>
-inline const graph<T>& node<T>::owner() const noexcept {
-	return m_owner;
-}
-
-template<class T>
-inline node<T>::node(graph<T>& owner, T* adopt_ptr, container edges) :
-	m_owner(owner),
+inline node<T>::node(T* adopt_ptr, container edges) :
 	m_value(adopt_ptr),
 	m_edges(edges) {
 }
 
 template<class T>
 template<class... Args>
-inline node<T>::node(graph<T>& owner, Args&&... args) :
-	m_owner(owner),
+inline node<T>::node(Args&&... args) :
 	m_value(std::make_unique<T>(std::forward<Args>(args)...)) {
 }
 
 template<class T>
 inline typename node<T>::nodes_view 
 node<T>::adjacent_nodes() noexcept {
-	return nodes_view(m_edges, *this);
+	return nodes_view(m_edges);
 }
 
 template<class T>
 inline typename node<T>::const_nodes_view 
 node<T>::adjacent_nodes() const noexcept {
-	return const_nodes_view(m_edges, *this);
+	return const_nodes_view(m_edges);
 }
 
 template <class T>

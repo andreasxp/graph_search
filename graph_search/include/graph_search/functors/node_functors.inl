@@ -1,5 +1,5 @@
 #pragma once
-#include "functors/node_functors.hpp"
+#include "node_functors.hpp"
 #include "graph.hpp"
 
 template<class T>

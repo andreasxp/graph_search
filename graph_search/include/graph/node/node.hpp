@@ -18,19 +18,16 @@ public:
 	// Public types ============================================================
 	using id_type = std::size_t;
 
-public:
+private:
 	// Private members and types -----------------------------------------------
-	using container = ska::flat_hash_set<id_type>;
+	using container = ska::flat_hash_set<node*>;
 	using container_iterator       = typename container::iterator;
 	using const_container_iterator = typename container::const_iterator;
 
-	// m_owner needs to be in a wrapper, as node must be swappable, and thus,
-	// move-assignable.
-	std::reference_wrapper<graph<T>> m_owner;
 	std::unique_ptr<T> m_value;
 	container m_edges;
 
-	node(graph<T>& owner, T* adopt_ptr = nullptr, container edges = container());
+	node(T* adopt_ptr = nullptr, container edges = container());
 
 public:
 	// Public types (cont.) ====================================================
@@ -43,7 +40,7 @@ public:
 
 	// Constructors ------------------------------------------------------------
 	template <class... Args>
-	node(graph<T>& owner, Args&&... args);
+	node(Args&&... args);
 
 	node() = delete;
 	node(const node&) = delete;
@@ -62,9 +59,6 @@ public:
 
 	// Observers ---------------------------------------------------------------
 	id_type id() const noexcept;
-
-	graph<T>&       owner() noexcept;
-	const graph<T>& owner() const noexcept;
 
 	// Member access -----------------------------------------------------------
 	T& value();
@@ -98,8 +92,6 @@ struct hash<node<T>>;
 }
 
 #include "node_iterator.hpp"
-#include "const_node_iterator.hpp"
 #include "nodes_view.hpp"
-#include "const_nodes_view.hpp"
 
 #include "node.inl"

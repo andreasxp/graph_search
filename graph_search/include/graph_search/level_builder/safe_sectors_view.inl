@@ -1,5 +1,5 @@
 #pragma once
-#include "level_builder/safe_sectors_view.hpp"
+#include "safe_sectors_view.hpp"
 
 template<class T>
 inline safe_sectors_view<T>::safe_sectors_view(const safe_sectors_view& other) {

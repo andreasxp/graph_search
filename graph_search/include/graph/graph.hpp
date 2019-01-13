@@ -2,17 +2,19 @@
 #include <cstdint>
 #include <iostream>
 
-#include "deps/ska/flat_hash_map.hpp"
+#include "deps/ska/unordered_map.hpp"
 #include "deps/json.hpp"
 using json = nlohmann::json;
 
 #include "node/node_functors.hpp"
 #include "node/node.hpp"
 
+#include <unordered_set>
+
 template <class T>
 class graph {
 private:
-	using container = ska::flat_hash_set<node<T>, std::hash<node<T>>, node_id_equal<T>>;
+	using container = ska::unordered_set<node<T>, std::hash<node<T>>, node_id_equal<T>>;
 	
 	using container_iterator = typename container::iterator;
 	using const_container_iterator = typename container::const_iterator;
@@ -22,7 +24,6 @@ private:
 public:
 	// Member types ============================================================
 	using value_type      = T;
-	using node_type       = node<T>;
 	using size_type       = typename container::size_type;
 	using difference_type = typename container::difference_type;
 	using allocator_type  = typename container::allocator_type;
@@ -65,25 +66,31 @@ public:
 	friend inline void swap(graph<T_>& first, graph<T_>& second) noexcept;
 
 	// Iterators ---------------------------------------------------------------
-	iterator begin() noexcept;
+	iterator       begin() noexcept;
 	const_iterator begin() const noexcept;
 	const_iterator cbegin() const noexcept;
 
-	iterator end() noexcept;
+	iterator       end() noexcept;
 	const_iterator end() const noexcept;
 	const_iterator cend() const noexcept;
 
 	// Node iterators ----------------------------------------------------------
-	nodes_view nodes() noexcept;
+	nodes_view       nodes() noexcept;
 	const_nodes_view nodes() const noexcept;
+
+	// Convert node::node_iterator to graph::node_iterator
+	node_iterator       to_node_iterator(
+		typename node<T>::node_iterator iter) noexcept;
+	const_node_iterator to_node_iterator(
+		typename node<T>::const_node_iterator iter) const noexcept;
 
 	// Connecting --------------------------------------------------------------
 
-	void connect(node_type& n1, node_type& n2);
+	void connect(node<T>& n1, node<T>& n2);
 	void connect(iterator it1, iterator it2);
 	void connect(node_iterator it1, node_iterator it2);
 
-	void disconnect(node_type& n1, node_type& n2);
+	void disconnect(node<T>& n1, node<T>& n2);
 	void disconnect(iterator it1, iterator it2);
 	void disconnect(node_iterator it1, node_iterator it2);
 
@@ -136,11 +143,7 @@ template <class T>
 void from_json(const json& j, graph<T>& obj);
 
 #include "iterator.hpp"
-#include "const_iterator.hpp"
 #include "node_iterator.hpp"
-#include "const_node_iterator.hpp"
-
 #include "nodes_view.hpp"
-#include "const_nodes_view.hpp"
 
 #include "graph.inl"

@@ -3,17 +3,18 @@
 
 template <class T>
 inline node<T>::node_iterator::node_iterator(
-	const container_iterator& other,
-	const node_lookup<T>& lookup)
-	: base(other, lookup) {
+	const container_iterator& other) : 
+	base(other) {
 }
 
-template<class T>
-inline bool node<T>::node_iterator::is_valid() const noexcept {
-	return (*this) != base::get_functor().get_node().adjacent_nodes().end();
+template <class T>
+inline node<T>::const_node_iterator::const_node_iterator(
+	const node_iterator& other)	: 
+	base(other.get_iterator()) {
 }
 
-template<class T>
-inline node<T>::node_iterator::operator bool() const noexcept {
-	return is_valid();
+template <class T>
+inline node<T>::const_node_iterator::const_node_iterator(
+	const const_container_iterator& other) :
+	base(other) {
 }

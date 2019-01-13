@@ -20,7 +20,7 @@ public:
 	// not. Reason: pseudonodes are used in const graph methods to lookup
 	// values. The const-ness is casted away, and so the reference should
 	// never be accessed, let alone modified.
-	pseudonode(const graph<T>& gr, typename node<T>::id_type id);
+	pseudonode(typename node<T>::id_type id);
 	~pseudonode();
 };
 

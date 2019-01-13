@@ -4,7 +4,7 @@
 #include "tests.hpp"
 
 int main(int argc, char** argv) {
-	/*using node_iterator = graph<int>::node_iterator;
+	using node_iterator = graph<int>::node_iterator;
 
 	graph<int> g;
 	g.reserve(2);
@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 		std::cout << "\n";
 	}
 	std::cout << "}" << std::endl;
-	*/
+	
 
 	/*
 	std::ifstream ifs("graph-20-0.2.json");
@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
 		std::cout << pf[i].size() << std::endl;
 	}*/
 
-	run_benchmark(argc, argv);
+	//run_benchmark(argc, argv);
 	//test_search("last_test.json");
 
 	/*graph<int> g;

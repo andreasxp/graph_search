@@ -1,5 +1,5 @@
 #pragma once
-#include "level_builder/level_builder_1thread.hpp"
+#include "level_builder_1thread.hpp"
 
 template<class T>
 template<class Container, class>

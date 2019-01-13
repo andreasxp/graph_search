@@ -24,8 +24,8 @@ inline const node<T>& pseudonode<T>::imitator() const noexcept {
 // This ctor assumes that the number, returned by id() is the pointer to
 // the internal T value.
 template<class T>
-inline pseudonode<T>::pseudonode(const graph<T>& gr, typename node<T>::id_type id) :
-	m_imitator(const_cast<graph<T>&>(gr), reinterpret_cast<T*>(id)) {
+inline pseudonode<T>::pseudonode(typename node<T>::id_type id) :
+	m_imitator(reinterpret_cast<T*>(id)) {
 }
 
 template<class T>
