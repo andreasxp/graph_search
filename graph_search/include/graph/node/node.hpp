@@ -9,6 +9,10 @@
 #include "deps/json.hpp"
 using json = nlohmann::json;
 
+#include "../connection/connection.hpp"
+#include "../connection/connection_functors.hpp"
+#include "node_functors.hpp"
+
 template <class T>
 class graph;
 
@@ -20,7 +24,10 @@ public:
 
 private:
 	// Private members and types -----------------------------------------------
-	using container = ska::flat_hash_set<node*>;
+	using container = ska::flat_hash_set<
+		connection<T>, 
+		connection_node_hash<T>, 
+		connection_node_equal<T, void, node_id_equal<T>>>;
 	using container_iterator       = typename container::iterator;
 	using const_container_iterator = typename container::const_iterator;
 
@@ -31,7 +38,6 @@ private:
 
 public:
 	// Public types (cont.) ====================================================
-
 	class node_iterator;
 	class const_node_iterator;
 
@@ -39,7 +45,7 @@ public:
 	class const_nodes_view;
 
 	// Constructors ------------------------------------------------------------
-	template <class... Args>
+	template <class... Args, class = std::enable_if_t<std::is_constructible_v<T, Args&&...>>>
 	node(Args&&... args);
 
 	node() = delete;
@@ -74,10 +80,13 @@ public:
 
 private:
 	// Connecting --------------------------------------------------------------
-	void fw_connect(const node& n); //one-way connecting
-	void bi_connect(node& n);       //two-way connecting
 
-	void fw_disconnect(const node& n);
+	// Connectors take mutable references because a node holds pointers to
+	// mutable nodes.
+	void fw_connect(node& n); //one-way connecting
+	void bi_connect(node& n); //two-way connecting
+
+	void fw_disconnect(node& n);
 	void bi_disconnect(node& n);
 };
 

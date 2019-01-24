@@ -13,7 +13,7 @@ inline const T& node<T>::value() const {
 }
 
 template<class T>
-inline void node<T>::fw_connect(const node& n) {
+inline void node<T>::fw_connect(node& n) {
 	m_edges.emplace(&n);
 }
 
@@ -24,7 +24,7 @@ inline void node<T>::bi_connect(node& n) {
 }
 
 template<class T>
-inline void node<T>::fw_disconnect(const node& n) {
+inline void node<T>::fw_disconnect(node& n) {
 	m_edges.erase(&n);
 }
 
@@ -46,7 +46,7 @@ inline node<T>::node(T* adopt_ptr, container edges) :
 }
 
 template<class T>
-template<class... Args>
+template<class... Args, class>
 inline node<T>::node(Args&&... args) :
 	m_value(std::make_unique<T>(std::forward<Args>(args)...)) {
 }

@@ -243,6 +243,18 @@
     <ClInclude Include="include\graph_search\functors\sector_functors.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\graph\connection\connection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\manual_ptr.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graph\connection\connection_functors.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graph\connection\pseudoconnection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -332,6 +344,18 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="include\graph_search\functors\sector_functors.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="deps\manual_ptr.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\graph\connection\connection.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\graph\connection\connection_functors.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\graph\connection\pseudoconnection.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

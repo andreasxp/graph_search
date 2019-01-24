@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\ctpl_stl.h" />
+    <ClInclude Include="deps\manual_ptr.hpp" />
     <ClInclude Include="deps\ska\bytell_hash_map.hpp" />
     <ClInclude Include="deps\ska\flat_hash_map.hpp" />
     <ClInclude Include="deps\ska\unordered_map.hpp" />
@@ -197,6 +198,9 @@
     <ClInclude Include="deps\zh\type_traits\is_weaker_qualified.hpp" />
     <ClInclude Include="deps\zh\type_traits\remove_all_pointers.hpp" />
     <ClInclude Include="include\benchmark.hpp" />
+    <ClInclude Include="include\graph\connection\connection.hpp" />
+    <ClInclude Include="include\graph\connection\connection_functors.hpp" />
+    <ClInclude Include="include\graph\connection\pseudoconnection.hpp" />
     <ClInclude Include="include\graph_search\functors\node_functors.hpp" />
     <ClInclude Include="include\graph\node\nodes_view.hpp" />
     <ClInclude Include="include\graph\node\node_iterator.hpp" />
@@ -234,11 +238,15 @@
     <ClInclude Include="include\graph\random.inl" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="deps\manual_ptr.inl" />
     <None Include="deps\zh\container_view_impl_no_reverse.inl" />
     <None Include="deps\zh\container_view_impl_reverse.inl" />
     <None Include="deps\zh\deriveale_ptr.inl" />
     <None Include="deps\zh\iterator.inl" />
     <None Include="deps\zh\proxy_iterator.inl" />
+    <None Include="include\graph\connection\connection.inl" />
+    <None Include="include\graph\connection\connection_functors.inl" />
+    <None Include="include\graph\connection\pseudoconnection.inl" />
     <None Include="include\graph\iterator.inl" />
     <None Include="include\graph\node\node_functors.inl" />
     <None Include="include\graph\node\node_iterator.inl" />
