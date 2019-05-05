@@ -1,3 +1,5 @@
+main.cpp
+benchmark.cpp
 *.json
 *.png
 *.zip

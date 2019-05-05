@@ -13,7 +13,7 @@ public:
 	thread_safe_random_device(const thread_safe_random_device& other) = delete;
 	thread_safe_random_device(thread_safe_random_device&& other) = delete;
 
-	auto operator()();
+	inline auto operator()();
 };
 
 inline auto thread_safe_random_device::operator()() {

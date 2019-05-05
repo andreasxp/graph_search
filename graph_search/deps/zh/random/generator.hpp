@@ -13,6 +13,6 @@ public:
 };
 
 template<class T>
-inline T generator<T>::operator()(const T& min, const T& max) {
+T generator<T>::operator()(const T& min, const T& max) {
 	return static_cast<multigenerator&>(*this).get<T>(min, max);
 }

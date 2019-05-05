@@ -12,7 +12,7 @@ class multigenerator {
 private:
 	inline static thread_safe_random_device rd;
 	
-	std::conditional_t<sizeof(std::size_t) == 8,
+	std::conditional_t<sizeof(std::uintptr_t) == 8,
 		std::mt19937_64,
 		std::mt19937> mt;
 
@@ -27,8 +27,8 @@ public:
 	multigenerator& operator=(const multigenerator& other) = default;
 	multigenerator& operator=(multigenerator&& other) = default;
 
-	void seed(unsigned int s);
-	void seed();
+	inline void seed(unsigned int s);
+	inline void seed();
 
 	template <class T>
 	T get();
@@ -46,7 +46,7 @@ inline void multigenerator::seed() {
 }
 
 template<class T>
-inline T multigenerator::get() {
+T multigenerator::get() {
 	return get(
 		std::numeric_limits<T>::lowest(),
 		std::numeric_limits<T>::max()
@@ -54,7 +54,7 @@ inline T multigenerator::get() {
 }
 
 template<class T>
-inline T multigenerator::get(T min, T max) {
+T multigenerator::get(T min, T max) {
 	if constexpr (
 		std::is_same_v<T, bool> ||
 		std::is_same_v<T, char> ||
@@ -83,5 +83,8 @@ inline T multigenerator::get(T min, T max) {
 
 		std::uniform_real_distribution<T> dist(min, max);
 		return dist(mt);
+	}
+	else {
+		static_assert(false, "multigenerator::get: unknown value type");
 	}
 }

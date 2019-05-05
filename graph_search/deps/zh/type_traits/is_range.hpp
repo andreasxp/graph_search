@@ -12,8 +12,8 @@ struct is_range : std::false_type {
 
 template <class T>
 struct is_range<T,
-	enable_if_defined_t<decltype(std::begin(std::declval<T>()))>,
-	enable_if_defined_t<decltype(std::end(std::declval<T>()))>> : std::true_type {
+	enable_if_defined_t<decltype(std::begin(std::declval<T&>()))>,
+	enable_if_defined_t<decltype(std::end(std::declval<T&>()))>> : std::true_type {
 };
 
 template <class T>
