@@ -6,7 +6,7 @@
 namespace zh {
 
 template<class T, class E>
-bool operator==(const connection<T, E>& lhs, const connection<T, E>& rhs) {
+inline bool operator==(const connection<T, E>& lhs, const connection<T, E>& rhs) {
 	if constexpr (std::is_same_v<E, void>) {
 		return lhs.get() == rhs.get();
 	}
@@ -16,12 +16,12 @@ bool operator==(const connection<T, E>& lhs, const connection<T, E>& rhs) {
 }
 
 template<class T, class E>
-bool operator!=(const connection<T, E>& lhs, const connection<T, E>& rhs) {
+inline bool operator!=(const connection<T, E>& lhs, const connection<T, E>& rhs) {
 	return !(lhs == rhs);
 }
 
 template<class T, class E>
-bool operator< (const connection<T, E> & lhs, const connection<T, E> & rhs) {
+inline bool operator< (const connection<T, E> & lhs, const connection<T, E> & rhs) {
 	if constexpr (std::is_same_v<E, void>) {
 		return lhs.get() < rhs.get();
 	}
@@ -33,17 +33,17 @@ bool operator< (const connection<T, E> & lhs, const connection<T, E> & rhs) {
 }
 
 template<class T, class E>
-bool operator> (const connection<T, E> & lhs, const connection<T, E> & rhs) {
+inline bool operator> (const connection<T, E> & lhs, const connection<T, E> & rhs) {
 	return rhs < lhs;
 }
 
 template<class T, class E>
-bool operator<=(const connection<T, E> & lhs, const connection<T, E> & rhs) {
+inline bool operator<=(const connection<T, E> & lhs, const connection<T, E> & rhs) {
 	return !(lhs > rhs);
 }
 
 template<class T, class E>
-bool operator>=(const connection<T, E> & lhs, const connection<T, E> & rhs) {
+inline bool operator>=(const connection<T, E> & lhs, const connection<T, E> & rhs) {
 	return !(lhs < rhs);
 }
 

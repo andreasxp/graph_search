@@ -104,7 +104,7 @@ void manual_ptr<T>::reset(T* adopt_ptr) {
 }
 
 template<class T>
-T* manual_ptr<T>::release() {
+inline T* manual_ptr<T>::release() {
 	// If there's no value stored, return nullptr
 	if (m_data == 0) return nullptr;
 
@@ -119,12 +119,12 @@ T* manual_ptr<T>::release() {
 }
 
 template<class T>
-manual_ptr<T>::operator bool() const noexcept {
+inline manual_ptr<T>::operator bool() const noexcept {
 	return !empty();
 }
 
 template<class T>
-bool manual_ptr<T>::empty() const noexcept {
+inline bool manual_ptr<T>::empty() const noexcept {
 	return m_data == 0;
 }
 

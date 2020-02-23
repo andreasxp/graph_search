@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <range/v3/all.hpp>
 #include "node/node_fwd.hpp"
 #include "edge/edge.hpp"
 

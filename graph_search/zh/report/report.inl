@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include "zh/mutate.hpp"
 #include "report.hpp"
 #include "deps/zh/graph.hpp"
 #include "zh/graph_search/graph_search.hpp"
@@ -41,7 +42,9 @@ void report(const std::string& save_path,
 					std::cout << attempt << " ";
 
 					zh::graph<int> gr;
-					mutate(gr, n, p, test_gen());
+
+					mutate_nodes(gr, n, test_gen());
+					mutate_edges(gr, p);
 
 					data.append(gr, k, p);
 					data.dump_to_file("_temp_dump.json");
@@ -77,7 +80,7 @@ json merge_entries(const R& entries) {
 	for (auto&& field : result) {
 		double val = field.front();
 		for (int i = 1; i < field.size(); i++) {
-			val += field[i];
+			val += field[i].get<double>();
 		}
 		val /= field.size();
 		field = val;
@@ -87,7 +90,7 @@ json merge_entries(const R& entries) {
 }
 
 template<class T, class E, class R1, class R2, class R3, class F>
-json report2(const R1 & sizes, const R2 & max_depths, const R3 & ratios, std::size_t attempts, F && callable) {
+json report2(const R1& sizes, const R2& max_depths, const R3& ratios, std::size_t attempts, F && callable) {
 	json data;
 
 	for (auto&& size : sizes) {

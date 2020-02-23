@@ -5,12 +5,12 @@
 
 namespace zh {
 
-template<class T, class E> bool operator==(const connection<T, E>& lhs, const connection<T, E>& rhs);
-template<class T, class E> bool operator!=(const connection<T, E>& lhs, const connection<T, E>& rhs);
-template<class T, class E> bool operator< (const connection<T, E>& lhs, const connection<T, E>& rhs);
-template<class T, class E> bool operator> (const connection<T, E>& lhs, const connection<T, E>& rhs);
-template<class T, class E> bool operator<=(const connection<T, E>& lhs, const connection<T, E>& rhs);
-template<class T, class E> bool operator>=(const connection<T, E>& lhs, const connection<T, E>& rhs);
+template<class T, class E> inline bool operator==(const connection<T, E>& lhs, const connection<T, E>& rhs);
+template<class T, class E> inline bool operator!=(const connection<T, E>& lhs, const connection<T, E>& rhs);
+template<class T, class E> inline bool operator< (const connection<T, E>& lhs, const connection<T, E>& rhs);
+template<class T, class E> inline bool operator> (const connection<T, E>& lhs, const connection<T, E>& rhs);
+template<class T, class E> inline bool operator<=(const connection<T, E>& lhs, const connection<T, E>& rhs);
+template<class T, class E> inline bool operator>=(const connection<T, E>& lhs, const connection<T, E>& rhs);
 
 // Make two connections, from first to second and in reverse, with one value.
 template <class T, class E, class... Args>

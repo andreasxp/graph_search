@@ -6,13 +6,15 @@
 
 #include "thread_safe_random_device.hpp"
 
+namespace zh {
+
 // A generic generator that creates uniform values of any base type with no
 // restrictions. Can be seeded, seeded automatically by a random_device.
 class multigenerator {
 private:
 	inline static thread_safe_random_device rd;
-	
-	std::conditional_t<sizeof(std::uintptr_t) == 8,
+
+	std::conditional_t<sizeof(std::size_t) == 8,
 		std::mt19937_64,
 		std::mt19937> mt;
 
@@ -27,8 +29,8 @@ public:
 	multigenerator& operator=(const multigenerator& other) = default;
 	multigenerator& operator=(multigenerator&& other) = default;
 
-	inline void seed(unsigned int s);
-	inline void seed();
+	void seed(unsigned int s);
+	void seed();
 
 	template <class T>
 	T get();
@@ -46,7 +48,7 @@ inline void multigenerator::seed() {
 }
 
 template<class T>
-T multigenerator::get() {
+inline T multigenerator::get() {
 	return get(
 		std::numeric_limits<T>::lowest(),
 		std::numeric_limits<T>::max()
@@ -54,7 +56,7 @@ T multigenerator::get() {
 }
 
 template<class T>
-T multigenerator::get(T min, T max) {
+inline T multigenerator::get(T min, T max) {
 	if constexpr (
 		std::is_same_v<T, bool> ||
 		std::is_same_v<T, char> ||
@@ -84,7 +86,6 @@ T multigenerator::get(T min, T max) {
 		std::uniform_real_distribution<T> dist(min, max);
 		return dist(mt);
 	}
-	else {
-		static_assert(false, "multigenerator::get: unknown value type");
-	}
 }
+
+} // namespace zh
