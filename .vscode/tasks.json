@@ -1,19 +1,22 @@
 {
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
-            ],
-            "options": {
-                "cwd": "C:\\msys64\\mingw64\\bin"
-            }
-        }
-    ],
-    "version": "2.0.0"
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"type": "shell",
+			"command": "conan install . -if build -b outdated -o tests=True -o examples=True && conan build . -bf build",
+			"problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": ["relative", "${workspaceRoot}/build"],
+			}
+		},
+		{
+			"label": "Launch",
+			"type": "shell",
+			"command": "start-process powershell -ArgumentList '${workspaceFolder}/build/bin/${workspaceFolderBasename}_puff_layers.exe; pause'",
+			"dependsOn": "Build",
+		}
+	]
 }

@@ -1,0 +1,667 @@
+{
+  "context": {
+    "date": "05/17/19 17:49:19",
+    "num_cpus": 8,
+    "mhz_per_cpu": 4008,
+    "cpu_scaling_enabled": false,
+    "caches": [
+      {
+        "type": "Data",
+        "level": 1,
+        "size": 32768000,
+        "num_sharing": 2
+      },
+      {
+        "type": "Instruction",
+        "level": 1,
+        "size": 32768000,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 2,
+        "size": 262144000,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 3,
+        "size": 8388608000,
+        "num_sharing": 8
+      }
+    ],
+    "library_build_type": "release"
+  },
+  "benchmarks": [
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.1.json\")",
+      "iterations": 37333,
+      "real_time": 1.7100963356825112e+01,
+      "cpu_time": 1.7159751426352020e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.2.json\")",
+      "iterations": 16000,
+      "real_time": 4.5058795749980625e+01,
+      "cpu_time": 4.4921875000000000e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.3.json\")",
+      "iterations": 11200,
+      "real_time": 6.5248522321407364e+01,
+      "cpu_time": 6.5569196428571431e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.4.json\")",
+      "iterations": 8960,
+      "real_time": 8.4299690178519469e+01,
+      "cpu_time": 8.5449218750000000e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.5.json\")",
+      "iterations": 4978,
+      "real_time": 1.4804963218149592e+02,
+      "cpu_time": 1.5066291683406990e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.6.json\")",
+      "iterations": 3446,
+      "real_time": 1.9268624637244409e+02,
+      "cpu_time": 1.9497243180499129e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.7.json\")",
+      "iterations": 3200,
+      "real_time": 2.3682268562509992e+02,
+      "cpu_time": 2.3437500000000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.8.json\")",
+      "iterations": 2358,
+      "real_time": 2.9099138083130651e+02,
+      "cpu_time": 2.9156064461407971e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-10-0.9.json\")",
+      "iterations": 2240,
+      "real_time": 3.1181158214264673e+02,
+      "cpu_time": 3.0691964285714283e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.1.json\")",
+      "iterations": 32000,
+      "real_time": 2.1928271874998021e+01,
+      "cpu_time": 2.1484375000000000e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.2.json\")",
+      "iterations": 17920,
+      "real_time": 3.9483933035709484e+01,
+      "cpu_time": 3.9236886160714285e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.3.json\")",
+      "iterations": 6400,
+      "real_time": 9.9025546874997872e+01,
+      "cpu_time": 9.7656250000000000e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.4.json\")",
+      "iterations": 4978,
+      "real_time": 1.3428714463639116e+02,
+      "cpu_time": 1.3496886299718761e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.5.json\")",
+      "iterations": 3733,
+      "real_time": 2.0072869193677536e+02,
+      "cpu_time": 1.9672515403160997e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.6.json\")",
+      "iterations": 2800,
+      "real_time": 2.5845124214291508e+02,
+      "cpu_time": 2.5669642857142856e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.7.json\")",
+      "iterations": 2036,
+      "real_time": 3.3319985019674118e+02,
+      "cpu_time": 3.3767190569744599e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.8.json\")",
+      "iterations": 1867,
+      "real_time": 3.8553992394191448e+02,
+      "cpu_time": 3.7660685591858595e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-11-0.9.json\")",
+      "iterations": 1600,
+      "real_time": 4.3969310250020050e+02,
+      "cpu_time": 4.2968750000000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.1.json\")",
+      "iterations": 29867,
+      "real_time": 2.2251205879405678e+01,
+      "cpu_time": 2.1972411022198411e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.2.json\")",
+      "iterations": 14933,
+      "real_time": 4.7961054778012198e+01,
+      "cpu_time": 4.8131654724435812e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.3.json\")",
+      "iterations": 5600,
+      "real_time": 1.1805194142847800e+02,
+      "cpu_time": 1.1718750000000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.4.json\")",
+      "iterations": 4480,
+      "real_time": 1.6092096272310690e+02,
+      "cpu_time": 1.5694754464285714e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.5.json\")",
+      "iterations": 2800,
+      "real_time": 2.5406777928570332e+02,
+      "cpu_time": 2.5111607142857142e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.6.json\")",
+      "iterations": 1948,
+      "real_time": 3.4898266170452644e+02,
+      "cpu_time": 3.4490503080082135e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.7.json\")",
+      "iterations": 1600,
+      "real_time": 4.3607505687475629e+02,
+      "cpu_time": 4.3945312500000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.8.json\")",
+      "iterations": 1120,
+      "real_time": 5.1480578571434830e+02,
+      "cpu_time": 5.0223214285714283e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-12-0.9.json\")",
+      "iterations": 1120,
+      "real_time": 5.8499914107090137e+02,
+      "cpu_time": 5.7198660714285711e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.1.json\")",
+      "iterations": 21333,
+      "real_time": 3.3472428022304541e+01,
+      "cpu_time": 3.2959499367177614e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.2.json\")",
+      "iterations": 11200,
+      "real_time": 6.6230216428623734e+01,
+      "cpu_time": 6.5569196428571431e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.3.json\")",
+      "iterations": 5600,
+      "real_time": 1.3011673089278833e+02,
+      "cpu_time": 1.2834821428571428e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.4.json\")",
+      "iterations": 3200,
+      "real_time": 2.2430691250008294e+02,
+      "cpu_time": 2.2460937500000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.5.json\")",
+      "iterations": 2240,
+      "real_time": 3.2747238124995550e+02,
+      "cpu_time": 3.2087053571428572e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.6.json\")",
+      "iterations": 1545,
+      "real_time": 4.5649092686130865e+02,
+      "cpu_time": 4.6521035598705504e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.7.json\")",
+      "iterations": 1120,
+      "real_time": 5.6443591607100120e+02,
+      "cpu_time": 5.5803571428571433e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.8.json\")",
+      "iterations": 1120,
+      "real_time": 6.6412731517857537e+02,
+      "cpu_time": 6.4174107142857144e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-13-0.9.json\")",
+      "iterations": 896,
+      "real_time": 7.6585572544628019e+02,
+      "cpu_time": 7.4986049107142856e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.1.json\")",
+      "iterations": 32000,
+      "real_time": 2.1941357687524032e+01,
+      "cpu_time": 2.1972656250000000e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.2.json\")",
+      "iterations": 8960,
+      "real_time": 8.1332281026850040e+01,
+      "cpu_time": 8.0217633928571431e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.3.json\")",
+      "iterations": 4073,
+      "real_time": 1.7309309452489219e+02,
+      "cpu_time": 1.6879450036827890e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.4.json\")",
+      "iterations": 2358,
+      "real_time": 2.9792881000838821e+02,
+      "cpu_time": 2.9818702290076334e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.5.json\")",
+      "iterations": 1493,
+      "real_time": 4.7464659209657907e+02,
+      "cpu_time": 4.7094775619557936e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.6.json\")",
+      "iterations": 1120,
+      "real_time": 5.7782924910725342e+02,
+      "cpu_time": 5.7198660714285711e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.7.json\")",
+      "iterations": 1120,
+      "real_time": 7.1748667321409289e+02,
+      "cpu_time": 7.1149553571428567e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.8.json\")",
+      "iterations": 747,
+      "real_time": 8.4988301740262068e+02,
+      "cpu_time": 8.3668005354752347e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-14-0.9.json\")",
+      "iterations": 640,
+      "real_time": 9.4661952499990332e+02,
+      "cpu_time": 9.0332031250000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.1.json\")",
+      "iterations": 19478,
+      "real_time": 3.6739644984124077e+01,
+      "cpu_time": 3.6900605811684976e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.2.json\")",
+      "iterations": 7467,
+      "real_time": 1.0013397709919428e+02,
+      "cpu_time": 1.0044194455604661e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.3.json\")",
+      "iterations": 2987,
+      "real_time": 2.3937602745225061e+02,
+      "cpu_time": 2.4062604620020088e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.4.json\")",
+      "iterations": 1948,
+      "real_time": 3.5785566221786632e+02,
+      "cpu_time": 3.6094712525667353e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.5.json\")",
+      "iterations": 1120,
+      "real_time": 5.3435663482121390e+02,
+      "cpu_time": 5.1618303571428567e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.6.json\")",
+      "iterations": 896,
+      "real_time": 6.9373137500048995e+02,
+      "cpu_time": 6.8010602678571433e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.7.json\")",
+      "iterations": 747,
+      "real_time": 8.9823578714927316e+02,
+      "cpu_time": 8.7851405622489960e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.8.json\")",
+      "iterations": 747,
+      "real_time": 1.0167639290497758e+03,
+      "cpu_time": 1.0249330655957162e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-15-0.9.json\")",
+      "iterations": 560,
+      "real_time": 1.2007993196432055e+03,
+      "cpu_time": 1.1997767857142858e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.1.json\")",
+      "iterations": 18667,
+      "real_time": 3.6645176621833123e+01,
+      "cpu_time": 3.6829699469652326e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.2.json\")",
+      "iterations": 5600,
+      "real_time": 1.2561816053578566e+02,
+      "cpu_time": 1.2555803571428571e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.3.json\")",
+      "iterations": 2489,
+      "real_time": 2.8189667657716490e+02,
+      "cpu_time": 2.7621534752912817e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.4.json\")",
+      "iterations": 1545,
+      "real_time": 4.4687726019416760e+02,
+      "cpu_time": 4.4498381877022655e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.5.json\")",
+      "iterations": 1120,
+      "real_time": 6.5928693660696672e+02,
+      "cpu_time": 6.5569196428571433e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.6.json\")",
+      "iterations": 747,
+      "real_time": 8.8905220214275982e+02,
+      "cpu_time": 8.7851405622489960e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.7.json\")",
+      "iterations": 640,
+      "real_time": 1.0558838375004598e+03,
+      "cpu_time": 1.0498046875000000e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.8.json\")",
+      "iterations": 498,
+      "real_time": 1.2733064698781288e+03,
+      "cpu_time": 1.2236445783132531e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-16-0.9.json\")",
+      "iterations": 498,
+      "real_time": 1.4637623232929802e+03,
+      "cpu_time": 1.4746485943775101e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.1.json\")",
+      "iterations": 21333,
+      "real_time": 3.3679605025076057e+01,
+      "cpu_time": 3.3691932686448226e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.2.json\")",
+      "iterations": 4480,
+      "real_time": 1.5866798191958813e+02,
+      "cpu_time": 1.5345982142857142e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.3.json\")",
+      "iterations": 2133,
+      "real_time": 3.3174022503499532e+02,
+      "cpu_time": 3.2964135021097047e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.4.json\")",
+      "iterations": 1120,
+      "real_time": 5.3828432410715061e+02,
+      "cpu_time": 5.3013392857142856e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.5.json\")",
+      "iterations": 896,
+      "real_time": 7.9090078683005254e+02,
+      "cpu_time": 7.6729910714285711e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.6.json\")",
+      "iterations": 640,
+      "real_time": 1.0620886296877075e+03,
+      "cpu_time": 1.0498046875000000e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.7.json\")",
+      "iterations": 560,
+      "real_time": 1.2875397017864998e+03,
+      "cpu_time": 1.3113839285714287e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.8.json\")",
+      "iterations": 448,
+      "real_time": 1.5608919575892546e+03,
+      "cpu_time": 1.5345982142857142e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-17-0.9.json\")",
+      "iterations": 448,
+      "real_time": 1.7684774375002885e+03,
+      "cpu_time": 1.7787388392857142e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.1.json\")",
+      "iterations": 17231,
+      "real_time": 4.0732803435641166e+01,
+      "cpu_time": 4.0805815100690616e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.2.json\")",
+      "iterations": 3733,
+      "real_time": 1.9601374390566079e+02,
+      "cpu_time": 1.9253951245646934e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.3.json\")",
+      "iterations": 1867,
+      "real_time": 3.6812246330996220e+02,
+      "cpu_time": 3.6823781467595074e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.4.json\")",
+      "iterations": 1120,
+      "real_time": 6.5038793124959489e+02,
+      "cpu_time": 6.5569196428571433e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.5.json\")",
+      "iterations": 747,
+      "real_time": 9.5059806024040506e+02,
+      "cpu_time": 9.6218206157965199e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.6.json\")",
+      "iterations": 560,
+      "real_time": 1.2571666071429329e+03,
+      "cpu_time": 1.2555803571428571e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.7.json\")",
+      "iterations": 448,
+      "real_time": 1.5443866763393187e+03,
+      "cpu_time": 1.5345982142857142e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.8.json\")",
+      "iterations": 373,
+      "real_time": 1.8763203163532442e+03,
+      "cpu_time": 1.8012734584450402e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-18-0.9.json\")",
+      "iterations": 320,
+      "real_time": 2.1694419468730075e+03,
+      "cpu_time": 2.0507812500000000e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.1.json\")",
+      "iterations": 10000,
+      "real_time": 5.2286844799982646e+01,
+      "cpu_time": 5.1562500000000000e+01,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.2.json\")",
+      "iterations": 3733,
+      "real_time": 2.0476566648810223e+02,
+      "cpu_time": 2.0509643718189125e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.3.json\")",
+      "iterations": 1445,
+      "real_time": 4.5524890173035158e+02,
+      "cpu_time": 4.4333910034602076e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.4.json\")",
+      "iterations": 896,
+      "real_time": 7.5949701227731987e+02,
+      "cpu_time": 7.3242187500000000e+02,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.5.json\")",
+      "iterations": 640,
+      "real_time": 1.1593864734379622e+03,
+      "cpu_time": 1.1718750000000000e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.6.json\")",
+      "iterations": 448,
+      "real_time": 1.5147453750005623e+03,
+      "cpu_time": 1.5345982142857142e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.7.json\")",
+      "iterations": 373,
+      "real_time": 1.8665651501339439e+03,
+      "cpu_time": 1.8431635388739946e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.8.json\")",
+      "iterations": 320,
+      "real_time": 2.1830052281245571e+03,
+      "cpu_time": 2.1972656250000000e+03,
+      "time_unit": "us"
+    },
+    {
+      "name": "graph_search(state, \"bm/graph-19-0.9.json\")",
+      "iterations": 280,
+      "real_time": 2.5223035607138759e+03,
+      "cpu_time": 2.5111607142857142e+03,
+      "time_unit": "us"
+    }
+  ]
+}

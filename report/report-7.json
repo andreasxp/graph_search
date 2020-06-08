@@ -1,0 +1,182 @@
+[
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 2.4,
+            "edge_puff_edges": 0.8,
+            "edge_puff_size": 1.4,
+            "edge_puff_size_in_bytes": 28.8,
+            "line_graph_ratio": 0.4,
+            "line_graph_size": 2.0,
+            "node_puff_clusters": 9.4,
+            "node_puff_edges": 4.8,
+            "node_puff_size": 2.4,
+            "node_puff_size_in_bytes": 136.0
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.1,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 8.8,
+            "edge_puff_edges": 10.4,
+            "edge_puff_size": 3.2,
+            "edge_puff_size_in_bytes": 211.2,
+            "line_graph_ratio": 0.06666666666666667,
+            "line_graph_size": 4.0,
+            "node_puff_clusters": 14.6,
+            "node_puff_edges": 15.6,
+            "node_puff_size": 4.0,
+            "node_puff_size_in_bytes": 342.4
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.2,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 32.6,
+            "edge_puff_edges": 66.0,
+            "edge_puff_size": 6.0,
+            "edge_puff_size_in_bytes": 1300.8,
+            "line_graph_ratio": 0.09333333333333334,
+            "line_graph_size": 6.0,
+            "node_puff_clusters": 33.6,
+            "node_puff_edges": 62.0,
+            "node_puff_size": 6.6,
+            "node_puff_size_in_bytes": 1353.6
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.3,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 190.2,
+            "edge_puff_edges": 658.4,
+            "edge_puff_size": 8.0,
+            "edge_puff_size_in_bytes": 11649.6,
+            "line_graph_ratio": 0.12142857142857141,
+            "line_graph_size": 8.0,
+            "node_puff_clusters": 49.6,
+            "node_puff_edges": 118.4,
+            "node_puff_size": 6.4,
+            "node_puff_size_in_bytes": 2273.6
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.4,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 1606.8,
+            "edge_puff_edges": 7943.0,
+            "edge_puff_size": 11.0,
+            "edge_puff_size_in_bytes": 138606.4,
+            "line_graph_ratio": 0.10909090909090909,
+            "line_graph_size": 11.0,
+            "node_puff_clusters": 80.4,
+            "node_puff_edges": 222.2,
+            "node_puff_size": 7.0,
+            "node_puff_size_in_bytes": 4105.6
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.5,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 7049.6,
+            "edge_puff_edges": 42863.8,
+            "edge_puff_size": 13.0,
+            "edge_puff_size_in_bytes": 726190.4,
+            "line_graph_ratio": 0.10256410256410256,
+            "line_graph_size": 13.0,
+            "node_puff_clusters": 98.8,
+            "node_puff_edges": 298.6,
+            "node_puff_size": 7.0,
+            "node_puff_size_in_bytes": 5267.2
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.6,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 30315.0,
+            "edge_puff_edges": 219387.2,
+            "edge_puff_size": 15.0,
+            "edge_puff_size_in_bytes": 3622908.8,
+            "line_graph_ratio": 0.10476190476190476,
+            "line_graph_size": 15.0,
+            "node_puff_clusters": 106.6,
+            "node_puff_edges": 337.2,
+            "node_puff_size": 7.0,
+            "node_puff_size_in_bytes": 5769.6
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.7,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 124659.0,
+            "edge_puff_edges": 1035121.8,
+            "edge_puff_size": 17.0,
+            "edge_puff_size_in_bytes": 16915689.6,
+            "line_graph_ratio": 0.10294117647058823,
+            "line_graph_size": 17.0,
+            "node_puff_clusters": 120.0,
+            "node_puff_edges": 398.8,
+            "node_puff_size": 7.0,
+            "node_puff_size_in_bytes": 6635.2
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.8,
+            "puff_max_depth": 18446744073709551615
+        }
+    },
+    {
+        "averaged_over": 5,
+        "result": {
+            "edge_puff_clusters": 510723.6,
+            "edge_puff_edges": 4790821.8,
+            "edge_puff_size": 19.0,
+            "edge_puff_size_in_bytes": 77549675.2,
+            "line_graph_ratio": 0.10058479532163742,
+            "line_graph_size": 19.0,
+            "node_puff_clusters": 124.2,
+            "node_puff_edges": 423.0,
+            "node_puff_size": 7.0,
+            "node_puff_size_in_bytes": 6916.8
+        },
+        "source": {
+            "graph_size": 7,
+            "graph_target_ratio": 0.9,
+            "puff_max_depth": 18446744073709551615
+        }
+    }
+]
