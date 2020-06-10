@@ -6,18 +6,18 @@
 #include "deps/ctpl_stl.h"
 
 #include "../node_group.hpp"
-#include "safe_sectors_view.hpp"
+#include "safe_clusters_view.hpp"
 #include "build_result.hpp"
 
 namespace zh {
 
-template <class T, class E>
-class level_builder<T, E, true> {
+template <class T>
+class level_builder<T, true> {
 private:
-	using sources_t = ska::bytell_hash_map<node_group<T, E>, safe_sectors_view<T, E>>;
+	using sources_t = ska::bytell_hash_map<node_group<T, void>, safe_clusters_view<T>>;
 
 	sources_t sources;
-	build_result<T, E> results;
+	build_result<T> results;
 	ctpl::thread_pool pool;
 
 	static const unsigned int worker_count;
@@ -32,7 +32,7 @@ private:
 	// results member is not used. Instead, a variable is returned from this function
 	// [warn] Call populate on all elements before calling this
 	template <class InputIt>
-	build_result<T, E> build_safe(InputIt first, InputIt last);
+	build_result<T> build_safe(InputIt first, InputIt last);
 public:
 	// Constructors ===========================================================
 	level_builder();
@@ -43,7 +43,7 @@ public:
 	// Build a level from a container
 	template <class Container, class = std::enable_if_t<
 		zh::is_range_v<Container> &&
-		std::is_same_v<typename Container::value_type, cluster<T, E>>>>
+		std::is_same_v<typename Container::value_type, cluster<T>>>>
 	bool build(const Container& last_level);
 
 	// Build a level from two iterators.
@@ -54,8 +54,8 @@ public:
 	template <class InputIt>
 	bool build(InputIt first, InputIt last);
 
-	build_result<T, E>& result() noexcept;
-	const build_result<T, E>& result() const noexcept;
+	build_result<T>& result() noexcept;
+	const build_result<T>& result() const noexcept;
 };
 
 } // namespace zh

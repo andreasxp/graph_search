@@ -3,8 +3,8 @@
 
 namespace zh {
 
-template<class T, class E>
-void build_result<T, E>::add(const cluster<T, E>& rslt) {
+template<class T>
+void build_result<T>::add(const cluster<T>& rslt) {
 	auto [it, insert_happened] = this->insert(rslt);
 
 	if (!insert_happened) {
@@ -13,8 +13,8 @@ void build_result<T, E>::add(const cluster<T, E>& rslt) {
 	}
 }
 
-template<class T, class E>
-void build_result<T, E>::join(const build_result& other) {
+template<class T>
+void build_result<T>::join(const build_result& other) {
 	for (const auto& sec : other) {
 		add(sec);
 	}

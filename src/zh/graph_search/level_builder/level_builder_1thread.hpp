@@ -6,26 +6,26 @@
 
 namespace zh {
 
-template <class T, class E>
-class level_builder<T, E, false> {
+template <class T>
+class level_builder<T, false> {
 private:
-	using sources_t = ska::bytell_hash_map<node_group<T, E>, std::vector<const cluster<T, E>*>>;
+	using sources_t = ska::bytell_hash_map<node_group<T, void>, std::vector<const cluster<T>*>>;
 
 	sources_t sources;
-	build_result<T, E> results;
+	build_result<T> results;
 
 public:
 	// Build a level from a container
 	template <class Container, class = std::enable_if_t<
 		zh::is_range_v<Container> &&
-		std::is_same_v<typename Container::value_type, cluster<T, E>>>>
+		std::is_same_v<typename Container::value_type, cluster<T>>>>
 		bool build(const Container& last_level);
 
 	template <class InputIt>
 	bool build(InputIt first, InputIt last);
 
-	build_result<T, E>& result() noexcept;
-	const build_result<T, E>& result() const noexcept;
+	build_result<T>& result() noexcept;
+	const build_result<T>& result() const noexcept;
 };
 
 } // namespace zh

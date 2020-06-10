@@ -3,7 +3,7 @@
 namespace zh {
 
 // Builds one level of a puff
-template <class T, class E, bool is_multithreaded = true>
+template <class T, bool is_multithreaded = true>
 class level_builder;
 
 } // namespace zh

@@ -4,15 +4,15 @@
 
 namespace zh {
 
-template<class T, class E>
-const unsigned int level_builder<T, E, true>::worker_count = std::thread::hardware_concurrency() - 1;
+template<class T>
+const unsigned int level_builder<T, true>::worker_count = std::thread::hardware_concurrency() - 1;
 
-template<class T, class E>
+template<class T>
 template<class InputIt>
-void level_builder<T, E, true>::populate(InputIt first, InputIt last) {
+void level_builder<T, true>::populate(InputIt first, InputIt last) {
 	// For each cluster in last level
 	for (InputIt it = first; it != last; ++it) {
-		const cluster<T, E>& cluster = *it;
+		const cluster<T>& cluster = *it;
 		// Go over each possible part of its group
 		// (see node_group::except_1)
 		for (const auto& part : cluster.nodes.except_1()) {
@@ -22,14 +22,14 @@ void level_builder<T, E, true>::populate(InputIt first, InputIt last) {
 	}
 }
 
-template<class T, class E>
+template<class T>
 template<class InputIt>
-build_result<T, E> level_builder<T, E, true>::build_safe(InputIt first, InputIt last) {
-	build_result<T, E> rslt;
+build_result<T> level_builder<T, true>::build_safe(InputIt first, InputIt last) {
+	build_result<T> rslt;
 
 	// For each cluster in last level
 	for (InputIt it = first; it != last; ++it) {
-		const cluster<T, E>& cluster = *it;
+		const cluster<T>& cluster = *it;
 		// Go over each possible part of its group
 		// (see node_group::except_1)
 		for (const auto& part : cluster.nodes.except_1()) {
@@ -52,21 +52,21 @@ build_result<T, E> level_builder<T, E, true>::build_safe(InputIt first, InputIt 
 	return rslt;
 }
 
-template<class T, class E>
+template<class T>
 template<class Container, class>
-bool level_builder<T, E, true>::build(const Container& last_level) {
+bool level_builder<T, true>::build(const Container& last_level) {
 	return build(std::begin(last_level), std::end(last_level), std::size(last_level));
 }
 
-template<class T, class E>
+template<class T>
 template<class InputIt>
-bool level_builder<T, E, true>::build(InputIt first, InputIt last) {
+bool level_builder<T, true>::build(InputIt first, InputIt last) {
 	return build(first, last, std::distance(first, last));
 }
 
-template<class T, class E>
+template<class T>
 template<class InputIt>
-bool level_builder<T, E, true>::build(InputIt first, InputIt last, std::size_t size) {
+bool level_builder<T, true>::build(InputIt first, InputIt last, std::size_t size) {
 	// For this algorithm to work, sectors must be at least of size 2
 	GS_ASSERT(first->nodes.size() >= 2);
 	sources.clear();
@@ -75,7 +75,7 @@ bool level_builder<T, E, true>::build(InputIt first, InputIt last, std::size_t s
 	// Populate the sources
 	populate(first, last);
 
-	std::vector<std::future<build_result<T, E>>> async_results;
+	std::vector<std::future<build_result<T>>> async_results;
 	async_results.reserve(worker_count);
 
 	// Concurrently compute parts of solution in increments of block_size
@@ -107,18 +107,18 @@ bool level_builder<T, E, true>::build(InputIt first, InputIt last, std::size_t s
 	return true;
 }
 
-template<class T, class E>
-level_builder<T, E, true>::level_builder() :
+template<class T>
+level_builder<T, true>::level_builder() :
 	pool(worker_count) {
 }
 
-template<class T, class E>
-build_result<T, E>& level_builder<T, E, true>::result() noexcept {
+template<class T>
+build_result<T>& level_builder<T, true>::result() noexcept {
 	return results;
 }
 
-template<class T, class E>
-const build_result<T, E>& level_builder<T, E, true>::result() const noexcept {
+template<class T>
+const build_result<T>& level_builder<T, true>::result() const noexcept {
 	return results;
 }
 

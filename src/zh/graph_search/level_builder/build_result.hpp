@@ -4,10 +4,10 @@
 
 namespace zh {
 
-template <class T, class E>
-class build_result : public ska::bytell_hash_set<cluster<T, E>, sector_nodes_hash<T, E>, sector_nodes_equal<T, E>> {
+template <class T>
+class build_result : public ska::bytell_hash_set<cluster<T>, sector_nodes_hash<T>, sector_nodes_equal<T>> {
 public:
-	void add(const cluster<T, E>& rslt);
+	void add(const cluster<T>& rslt);
 	void join(const build_result& other);
 };
 

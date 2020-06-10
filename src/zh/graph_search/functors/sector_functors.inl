@@ -4,26 +4,26 @@
 
 namespace zh {
 
-template<class T, class E>
-bool sector_lexicographical_order<T, E>::operator()(cluster<T, E> const& lhs, cluster<T, E> const& rhs) const {
+template<class T>
+bool sector_lexicographical_order<T>::operator()(cluster<T> const& lhs, cluster<T> const& rhs) const {
 	return std::lexicographical_compare(
 		lhs.nodes.begin(), lhs.nodes.end(),
 		rhs.nodes.begin(), rhs.nodes.end(),
-		node_value_order<T, E>());
+		node_value_order<T, void>());
 }
 
-template<class T, class E>
-bool sector_lexicographical_order<T, E>::operator()(const cluster<T, E>* const& lhs, const cluster<T, E>* const& rhs) const {
+template<class T>
+bool sector_lexicographical_order<T>::operator()(const cluster<T>* const& lhs, const cluster<T>* const& rhs) const {
 	return operator()(*lhs, *rhs);
 }
 
-template<class T, class E>
-std::size_t sector_nodes_hash<T, E>::operator()(const cluster<T, E>& obj) const {
-	return std::hash<node_group<T, E>>()(obj.nodes);
+template<class T>
+std::size_t sector_nodes_hash<T>::operator()(const cluster<T>& obj) const {
+	return std::hash<node_group<T, void>>()(obj.nodes);
 }
 
-template<class T, class E>
-std::size_t sector_nodes_equal<T, E>::operator()(const cluster<T, E>& lhs, const cluster<T, E>& rhs) const {
+template<class T>
+std::size_t sector_nodes_equal<T>::operator()(const cluster<T>& lhs, const cluster<T>& rhs) const {
 	return lhs.nodes == rhs.nodes;
 }
 

@@ -10,11 +10,11 @@ using boost::container::flat_set;
 
 namespace zh {
 
-template <class T, class E>
+template <class T>
 class cluster {
 public:
-	node_group<T, E> nodes;
-	flat_set<const cluster*, sector_lexicographical_order<T, E>> children;
+	node_group<T, void> nodes;
+	flat_set<const cluster*, sector_lexicographical_order<T>> children;
 
 	graph_match search(const cluster& other) const;
 	cluster& join_children(const cluster& other);
@@ -23,23 +23,23 @@ public:
 	constexpr cluster() = default;
 	cluster(const cluster& other) = default;
 	// Create a cluster from one node
-	explicit cluster(const node<T, E>& nd);
+	explicit cluster(const node<T>& nd);
 	// Construct a cluster by expanding a cluster by one node
-	cluster(const cluster& sec, const node<T, E>& nd);
+	cluster(const cluster& sec, const node<T>& nd);
 	// Construct a cluster by merging two sectors and setting them as children.
 	// This assumes that children have identical node_groups except for one node.
 	cluster(const cluster& child1, const cluster& child2);
 };
 
-template<class T, class E> bool operator==(const cluster<T, E>& lhs, const cluster<T, E>& rhs);
-template<class T, class E> bool operator!=(const cluster<T, E>& lhs, const cluster<T, E>& rhs);
-template<class T, class E> bool operator< (const cluster<T, E>& lhs, const cluster<T, E>& rhs);
-template<class T, class E> bool operator> (const cluster<T, E>& lhs, const cluster<T, E>& rhs);
-template<class T, class E> bool operator<=(const cluster<T, E>& lhs, const cluster<T, E>& rhs);
-template<class T, class E> bool operator>=(const cluster<T, E>& lhs, const cluster<T, E>& rhs);
+template<class T> bool operator==(const cluster<T>& lhs, const cluster<T>& rhs);
+template<class T> bool operator!=(const cluster<T>& lhs, const cluster<T>& rhs);
+template<class T> bool operator< (const cluster<T>& lhs, const cluster<T>& rhs);
+template<class T> bool operator> (const cluster<T>& lhs, const cluster<T>& rhs);
+template<class T> bool operator<=(const cluster<T>& lhs, const cluster<T>& rhs);
+template<class T> bool operator>=(const cluster<T>& lhs, const cluster<T>& rhs);
 
-template <class T, class E>
-std::ostream& operator<<(std::ostream& os, const cluster<T, E>& obj);
+template <class T>
+std::ostream& operator<<(std::ostream& os, const cluster<T>& obj);
 
 } // namespace zh
 

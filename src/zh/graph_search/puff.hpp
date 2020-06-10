@@ -9,11 +9,11 @@
 
 namespace zh {
 
-template <class T, class E>
+template <class T>
 class puff {
 public:
 	// level_type has sectors of one size
-	using level_type = std::vector<cluster<T, E>>;
+	using level_type = std::vector<cluster<T>>;
 	// container holds all the levels
 	using container_type = std::vector<level_type>;
 
@@ -24,7 +24,7 @@ public:
 	// Constructors ===========================================================
 	puff() = default;
 
-	puff(const graph<T, E>& gr, std::size_t max_depth = std::numeric_limits<std::size_t>::max());
+	puff(const graph<T>& gr, std::size_t max_depth = std::numeric_limits<std::size_t>::max());
 
 	puff(const puff& other) = default;
 	puff(puff&& other) = default;
@@ -47,14 +47,14 @@ public:
 	const level_type& operator[](std::size_t idx) const;
 };
 
-template <class T, class E>
-bool operator==(const puff<T, E>& lhs, const puff<T, E>& rhs);
+template <class T>
+bool operator==(const puff<T>& lhs, const puff<T>& rhs);
 
-template <class T, class E>
-bool operator!=(const puff<T, E>& lhs, const puff<T, E>& rhs);
+template <class T>
+bool operator!=(const puff<T>& lhs, const puff<T>& rhs);
 
-template <class T, class E>
-std::ostream& operator<<(std::ostream& os, const puff<T, E>& obj);
+template <class T>
+std::ostream& operator<<(std::ostream& os, const puff<T>& obj);
 
 } // namespace zh
 

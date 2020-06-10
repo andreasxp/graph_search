@@ -9,8 +9,8 @@
 
 namespace zh {
 
-template<class T, class E>
-puff<T, E>::puff(const graph<T, E>& gr, std::size_t max_depth) {
+template<class T>
+puff<T>::puff(const graph<T>& gr, std::size_t max_depth) {
 	if (max_depth == 0) throw std::invalid_argument("max_depth must be at least 1");
 	sectors.reserve(std::min(max_depth, gr.size()));
 
@@ -19,6 +19,8 @@ puff<T, E>::puff(const graph<T, E>& gr, std::size_t max_depth) {
 	for (auto& nd : gr.nodes()) {
 		sectors.front().emplace_back(nd);
 	}
+
+	std::cout << "1";
 
 	// Build level 2, if needed
 	if (max_depth > 1) {
@@ -30,7 +32,7 @@ puff<T, E>::puff(const graph<T, E>& gr, std::size_t max_depth) {
 		// For each cluster in first level
 		for (auto& cluster : sectors.front()) {
 			// Check edges
-			const node<T, E>& only_node = (**cluster.nodes.begin());
+			const node<T>& only_node = (**cluster.nodes.begin());
 
 			for (auto& adjacent : only_node.adjacent_nodes()) {
 				// Based on edges id emplace in one of vectors
@@ -59,8 +61,10 @@ puff<T, E>::puff(const graph<T, E>& gr, std::size_t max_depth) {
 		sectors.emplace_back(std::move(new_level1));
 	}
 
+	std::cout << " 2";
+
 	// Build remaining levels using already built ones
-	level_builder<T, E> lb;
+	level_builder<T> lb;
 	for (std::size_t level = 2; level < max_depth; level++) {
 		//std::cout << "level " << level << " growth" << std::endl;
 		if (!lb.build(sectors.back())) break;
@@ -69,18 +73,22 @@ puff<T, E>::puff(const graph<T, E>& gr, std::size_t max_depth) {
 		sectors.emplace(sectors.end(),
 			std::move_iterator(lb.result().begin()),
 			std::move_iterator(lb.result().end()));
+		
+		std::cout << " " << level+1;
 	}
+
+	std::cout << "\n";
 
 	//std::cout << "Built a puff (max_depth: " << max_depth << ", levels: " << sectors.size() << ", depth at back(): " << sectors.back().size() << "): " << *this;
 }
 
-template<class T, class E>
-std::size_t puff<T, E>::depth() const noexcept {
+template<class T>
+std::size_t puff<T>::depth() const noexcept {
 	return sectors.size();
 }
 
-template<class T, class E>
-std::size_t puff<T, E>::count_edges() const noexcept {
+template<class T>
+std::size_t puff<T>::count_edges() const noexcept {
 	std::size_t rslt = 0;
 
 	for (auto i : sectors) {
@@ -92,8 +100,8 @@ std::size_t puff<T, E>::count_edges() const noexcept {
 	return rslt;
 }
 
-template<class T, class E>
-std::size_t puff<T, E>::count_sectors() const noexcept {
+template<class T>
+std::size_t puff<T>::count_sectors() const noexcept {
 	std::size_t rslt = 0;
 
 	for (auto i : sectors) rslt += i.size();
@@ -101,8 +109,8 @@ std::size_t puff<T, E>::count_sectors() const noexcept {
 	return rslt;
 }
 
-template<class T, class E>
-std::size_t puff<T, E>::size_in_bytes() const noexcept {
+template<class T>
+std::size_t puff<T>::size_in_bytes() const noexcept {
 	std::size_t rslt = 0;
 
 	for (auto&& i : sectors) {
@@ -114,8 +122,8 @@ std::size_t puff<T, E>::size_in_bytes() const noexcept {
 	return rslt;
 }
 
-template<class T, class E>
-std::set<graph_match> puff<T, E>::search(const puff& other) const {
+template<class T>
+std::set<graph_match> puff<T>::search(const puff& other) const {
 	if (other.depth() > depth()) {
 		return {};
 	}
@@ -127,7 +135,7 @@ std::set<graph_match> puff<T, E>::search(const puff& other) const {
 
 		std::vector<std::future<graph_match>> matches;
 		for (auto&& j : sectors[other.depth() - 1]) {
-			matches.push_back(std::move(std::async(std::launch::async, &cluster<T, E>::search, &j, std::cref(i))));
+			matches.push_back(std::move(std::async(std::launch::async, &cluster<T>::search, &j, std::cref(i))));
 		}
 
 		for (auto&& j : matches) {
@@ -142,26 +150,26 @@ std::set<graph_match> puff<T, E>::search(const puff& other) const {
 	return rslt;
 }
 
-template<class T, class E>
-const typename puff<T, E>::level_type&
-puff<T, E>::operator[](std::size_t idx) const {
+template<class T>
+const typename puff<T>::level_type&
+puff<T>::operator[](std::size_t idx) const {
 	return sectors[idx];
 }
 
-template<class T, class E>
-bool operator==(const puff<T, E>& lhs, const puff<T, E>& rhs) {
+template<class T>
+bool operator==(const puff<T>& lhs, const puff<T>& rhs) {
 	return
 		!lhs.search(rhs).empty() &&
 		!rhs.search(lhs).empty();
 }
 
-template<class T, class E>
-bool operator!=(const puff<T, E>& lhs, const puff<T, E>& rhs) {
+template<class T>
+bool operator!=(const puff<T>& lhs, const puff<T>& rhs) {
 	return !(lhs == rhs);
 }
 
-template <class T, class E>
-std::ostream& operator<<(std::ostream& os, const puff<T, E>& obj) {
+template <class T>
+std::ostream& operator<<(std::ostream& os, const puff<T>& obj) {
 	os << "{" << std::endl;
 
 	for (std::size_t level = obj.depth() - 1; level != 0; level--) {

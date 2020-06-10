@@ -5,8 +5,8 @@
 
 namespace zh {
 
-template<class T, class E>
-graph_match cluster<T, E>::search(const cluster& other) const {
+template<class T>
+graph_match cluster<T>::search(const cluster& other) const {
 	//Sectors must be of one size
 	GS_ASSERT(nodes.size() == other.nodes.size());
 
@@ -24,7 +24,7 @@ graph_match cluster<T, E>::search(const cluster& other) const {
 	}
 	else {
 		if (!std::equal(nodes.begin(), nodes.end(), other.nodes.begin(),
-			node_value_equal<T, E>())) return {}; //Exit 2b: Values are different
+			node_value_equal<T, void>())) return {}; //Exit 2b: Values are different
 
 		//std::cout << "Sectors " << *this << " and " << other << " conform so far" << std::endl;
 		//std::cin.get();
@@ -56,8 +56,8 @@ graph_match cluster<T, E>::search(const cluster& other) const {
 	}
 }
 
-template<class T, class E>
-cluster<T, E>& cluster<T, E>::join_children(const cluster& other) {
+template<class T>
+cluster<T>& cluster<T>::join_children(const cluster& other) {
 	GS_ASSERT(nodes == other.nodes);
 
 	children.insert(other.children.begin(), other.children.end());
@@ -65,20 +65,20 @@ cluster<T, E>& cluster<T, E>::join_children(const cluster& other) {
 	return *this;
 }
 
-template<class T, class E>
-std::size_t cluster<T, E>::size_in_bytes() const {
+template<class T>
+std::size_t cluster<T>::size_in_bytes() const {
 	return
-		nodes.size() * sizeof(node<T, E>*) +
+		nodes.size() * sizeof(node<T>*) +
 		children.size() * sizeof(cluster*);
 }
 
-template<class T, class E>
-cluster<T, E>::cluster(const node<T, E>& nd) :
+template<class T>
+cluster<T>::cluster(const node<T>& nd) :
 	nodes({&nd}) {
 }
 
-template<class T, class E>
-cluster<T, E>::cluster(const cluster& sec, const node<T, E>& nd) :
+template<class T>
+cluster<T>::cluster(const cluster& sec, const node<T>& nd) :
 	nodes(sec.nodes),
 	children({&sec}) {
 	nodes.insert(&nd);
@@ -86,8 +86,8 @@ cluster<T, E>::cluster(const cluster& sec, const node<T, E>& nd) :
 	GS_ASSERT(nodes.size() == sec.nodes.size() + 1);
 }
 
-template<class T, class E>
-cluster<T, E>::cluster(const cluster& child1, const cluster& child2) :
+template<class T>
+cluster<T>::cluster(const cluster& child1, const cluster& child2) :
 	nodes(child1.nodes) {
 	// Children must have identical node_groups except for one node.
 	GS_ASSERT(child1.nodes.size() == child2.nodes.size());
@@ -102,15 +102,15 @@ cluster<T, E>::cluster(const cluster& child1, const cluster& child2) :
 	children.insert(&child2);
 }
 
-template<class T, class E> bool operator==(const cluster<T, E> & lhs, const cluster<T, E> & rhs) { return lhs.nodes == rhs.nodes && lhs.children == rhs.children; }
-template<class T, class E> bool operator!=(const cluster<T, E> & lhs, const cluster<T, E> & rhs) { return !operator==(lhs, rhs); }
-template<class T, class E> bool operator< (const cluster<T, E> & lhs, const cluster<T, E> & rhs) { return lhs.nodes < rhs.nodes; }
-template<class T, class E> bool operator> (const cluster<T, E> & lhs, const cluster<T, E> & rhs) { return  operator< (rhs, lhs); }
-template<class T, class E> bool operator<=(const cluster<T, E> & lhs, const cluster<T, E> & rhs) { return !operator> (lhs, rhs); }
-template<class T, class E> bool operator>=(const cluster<T, E> & lhs, const cluster<T, E> & rhs) { return !operator< (lhs, rhs); }
+template<class T> bool operator==(const cluster<T> & lhs, const cluster<T> & rhs) { return lhs.nodes == rhs.nodes && lhs.children == rhs.children; }
+template<class T> bool operator!=(const cluster<T> & lhs, const cluster<T> & rhs) { return !operator==(lhs, rhs); }
+template<class T> bool operator< (const cluster<T> & lhs, const cluster<T> & rhs) { return lhs.nodes < rhs.nodes; }
+template<class T> bool operator> (const cluster<T> & lhs, const cluster<T> & rhs) { return  operator< (rhs, lhs); }
+template<class T> bool operator<=(const cluster<T> & lhs, const cluster<T> & rhs) { return !operator> (lhs, rhs); }
+template<class T> bool operator>=(const cluster<T> & lhs, const cluster<T> & rhs) { return !operator< (lhs, rhs); }
 
-template <class T, class E>
-std::ostream& operator<<(std::ostream & os, const cluster<T, E> & obj) {
+template <class T>
+std::ostream& operator<<(std::ostream & os, const cluster<T> & obj) {
 	os << "{";
 
 	for (auto&& i : obj.nodes) {
