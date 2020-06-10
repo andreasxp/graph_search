@@ -11,6 +11,7 @@ To build the program yourself, first make sure you have the following tools inst
 
 1. Add the [bincrafters repository](https://bintray.com/bincrafters/public-conan) to conan.
 1. Compile and export into conan cache the following projects in order:
+    - [skarupke hash maps](https://github.com/andreasxp/flat_hash_map) (this is a dependency, not a first-party lib)
     - [type_traits](https://github.com/andreasxp/type_traits)
     - [random](https://github.com/andreasxp/random)
     - [dataprism](https://github.com/andreasxp/dataprism)
