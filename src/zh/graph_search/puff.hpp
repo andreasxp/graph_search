@@ -16,7 +16,7 @@ public:
 	// level_type has sectors of one size
 	using level_type = std::vector<cluster<T>>;
 	// container holds all the levels
-	using container_type = std::vector<level_type>;
+	using container_type = std::vector<level_type>;	
 
 private:
 	container_type sectors;
@@ -44,7 +44,7 @@ public:
 
 	// Search for another puff in this puff
 	template <class U, class F = std::equal_to<void>>
-	std::set<graph_match> search(const puff<U>& other, F&& compare = F()) const;
+	std::set<match<T, U>> search(const puff<U>& other, F&& compare = F()) const;
 
 	const level_type& operator[](std::size_t idx) const;
 

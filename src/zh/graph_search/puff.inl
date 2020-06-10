@@ -9,6 +9,27 @@
 
 namespace zh {
 
+namespace {
+	template <class T, class U>
+	std::set<match<T, U>> merge_matches(const std::set<match<T, U>>& v1, const std::set<match<T, U>>& v2) {
+		if (v1.empty()) return v2;
+		if (v2.empty()) return v1;
+
+		std::set<match<T, U>> rslt;
+
+		//Merge
+		for (auto i : v1) {
+			for (auto&& j : v2) {
+				i.insert(j.begin(), j.end());
+
+				rslt.emplace(i);
+			}
+		}
+
+		return rslt;
+	}
+}
+
 template<class T>
 puff<T>::puff(const graph<T>& gr, std::size_t max_depth) {
 	if (max_depth == 0) throw std::invalid_argument("max_depth must be at least 1");
@@ -124,19 +145,21 @@ std::size_t puff<T>::size_in_bytes() const noexcept {
 
 template<class T>
 template<class U, class F>
-std::set<graph_match> puff<T>::search(const puff<U>& other, F&& compare) const {
+std::set<match<T, U>> puff<T>::search(const puff<U>& other, F&& compare) const {
+	using matches = std::set<match<T, U>>;
+
 	if (other.depth() > depth()) {
 		return {};
 	}
 
-	std::set<graph_match> rslt;
+	matches rslt;
 
 	for (auto&& i : other.sectors[other.depth() - 1]) {
-		std::set<graph_match> matches_of_one;
+		matches matches_of_one;
 
-		std::vector<std::future<graph_match>> matches;
+		std::vector<std::future<match<T, U>>> future_matches;
 		for (auto&& j : sectors[other.depth() - 1]) {
-			matches.push_back(
+			future_matches.push_back(
 				std::move(
 					std::async(
 						std::launch::async,
@@ -148,13 +171,13 @@ std::set<graph_match> puff<T>::search(const puff<U>& other, F&& compare) const {
 			);
 		}
 
-		for (auto&& j : matches) {
-			graph_match match(std::move(j.get()));
-			if (match) matches_of_one.emplace(match);
+		for (auto&& j : future_matches) {
+			match<T, U> m(std::move(j.get()));
+			if (!m.empty()) matches_of_one.emplace(m);
 		}
 
 		if (matches_of_one.empty()) return {};
-		rslt = merge(rslt, matches_of_one);
+		rslt = merge_matches(rslt, matches_of_one);
 	}
 
 	return rslt;

@@ -5,10 +5,13 @@
 
 #include "functors/sector_functors.hpp"
 #include "node_group.hpp"
-#include "graph_match.hpp"
 using boost::container::flat_set;
 
 namespace zh {
+
+// match holds a single found match after searching for graph<U> in graph<T>
+template <class T, class U>
+using match = std::map<const node<U>*, const node<T>*>;
 
 template <class T>
 class cluster {
@@ -17,7 +20,7 @@ public:
 	flat_set<const cluster*, sector_lexicographical_order<T>> children;
 
 	template<class U, class F>
-	graph_match search(const cluster<U>& other, F&& compare = F()) const;
+	match<T, U> search(const cluster<U>& other, F&& compare = F()) const;
 	cluster& join_children(const cluster& other);
 	std::size_t size_in_bytes() const;
 

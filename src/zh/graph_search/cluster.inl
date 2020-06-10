@@ -7,7 +7,7 @@ namespace zh {
 
 template<class T>
 template<class U, class F>
-graph_match cluster<T>::search(const cluster<U>& other, F&& compare) const {
+match<T, U> cluster<T>::search(const cluster<U>& other, F&& compare) const {
 	//Sectors must be of one size
 	GS_ASSERT(nodes.size() == other.nodes.size());
 
@@ -20,8 +20,8 @@ graph_match cluster<T>::search(const cluster<U>& other, F&& compare) const {
 		//std::cout << "Sectors " << *this << " and " << other << " conform" << std::endl;
 		//std::cin.get();
 
-		graph_match rslt;
-		rslt.add((*nodes.begin())->id(), (*other.nodes.begin())->id());
+		match<T, U> rslt;
+		rslt.emplace(std::make_pair(*other.nodes.begin(), *nodes.begin()));
 		//std::cout << "And return this: " << rslt << std::endl;
 		return rslt;
 	}
@@ -34,7 +34,7 @@ graph_match cluster<T>::search(const cluster<U>& other, F&& compare) const {
 		//std::cout << "Sectors " << *this << " and " << other << " conform so far" << std::endl;
 		//std::cin.get();
 
-		graph_match rslt;
+		match<T, U> rslt;
 		//In the following loop, i represents this->children, and j - other.children
 		//For each j, there must be an equivalent i. So if i reaches end() before j
 		//return failure
@@ -44,15 +44,15 @@ graph_match cluster<T>::search(const cluster<U>& other, F&& compare) const {
 				return {};
 			}; //Exit 3a: Children not conformant
 
-			graph_match temp;
-			while (!(temp = (*i)->search(**j, compare))) {
+			match<T, U> temp;
+			while ((temp = (*i)->search(**j, compare)).empty()) {
 				i++;
 				if (i == children.end()) {
 					//std::cout << "Sectors " << *this << " and " << other << " failed on children! 3b" << std::endl;
 					return {};
 				}//Exit 3a: Children not conformant
 			}
-			rslt += temp;
+			rslt.insert(temp.begin(), temp.end());
 		}
 
 		//std::cout << "Sectors " << *this << " and " << other << " fully conform! 0" << std::endl;

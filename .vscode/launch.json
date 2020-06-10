@@ -9,7 +9,7 @@
 			"type": "cppvsdbg",
 			"request": "launch",
 			"preLaunchTask": "Build",
-			"program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_example.exe",
+			"program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_basic_usage.exe",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}/build/bin",

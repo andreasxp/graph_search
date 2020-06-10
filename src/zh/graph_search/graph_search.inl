@@ -6,7 +6,7 @@
 namespace zh {
 
 template<class T, class U, class F>
-std::set<graph_match> search(const graph<T>& source, const graph<U>& target, F&& compare) {
+std::set<match<T, U>> search(const graph<T>& source, const graph<U>& target, F&& compare) {
 	std::cout << "Started search\n";
 	puff target_puff(target);
 	std::cout << "Build target puff with " << target_puff.depth() << " layers\n";
