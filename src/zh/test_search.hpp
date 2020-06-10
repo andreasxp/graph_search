@@ -8,9 +8,9 @@
 #include "graph_search.hpp"
 namespace fs = std::filesystem;
 
-template<class T>
-void test_search(const zh::graph<T>& graph1, const zh::graph<T>& graph2) {
-	auto mapping = search(graph1, graph2);
+template<class T, class U, class F = std::equal_to<void>>
+void test_search(const zh::graph<T>& graph1, const zh::graph<U>& graph2, F&& compare = F()) {
+	auto mapping = search(graph1, graph2, compare);
 
 	std::cout
 		<< "= Graph info ===================================================================" << std::endl

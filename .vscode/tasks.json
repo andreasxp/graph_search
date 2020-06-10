@@ -15,7 +15,7 @@
 		{
 			"label": "Launch",
 			"type": "shell",
-			"command": "start-process powershell -ArgumentList '${workspaceFolder}/build/bin/${workspaceFolderBasename}_basic_usage.exe; pause'",
+			"command": "start-process powershell -ArgumentList '${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests.exe; pause'",
 			"dependsOn": "Build",
 		}
 	]

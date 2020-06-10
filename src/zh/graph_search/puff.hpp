@@ -3,6 +3,7 @@
 #include <limits> 
 #include <set>
 #include <vector>
+#include <utility>
 
 #include "cluster.hpp"
 #include <zh/graph.hpp>
@@ -42,9 +43,14 @@ public:
 	std::size_t size_in_bytes() const noexcept;
 
 	// Search for another puff in this puff
-	std::set<graph_match> search(const puff& other) const;
+	template <class U, class F = std::equal_to<void>>
+	std::set<graph_match> search(const puff<U>& other, F&& compare = F()) const;
 
 	const level_type& operator[](std::size_t idx) const;
+
+	// Friends ================================================================
+	template <class T_>
+	friend class puff;
 };
 
 template <class T>

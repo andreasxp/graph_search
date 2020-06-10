@@ -5,13 +5,13 @@
 
 namespace zh {
 
-template <class T, class E>
-std::set<graph_match> search(const graph<T, E>& source, const graph<T, E>& target);
+template <class T, class U, class F = std::equal_to<void>>
+std::set<graph_match> search(const graph<T>& source, const graph<U>& target, F&& = F());
 
-template <class T, class E>
-bool operator==(const graph<T, E>& lhs, const graph<T, E>& rhs);
-template <class T, class E>
-bool operator!=(const graph<T, E>& lhs, const graph<T, E>& rhs);
+template <class T>
+bool operator==(const graph<T>& lhs, const graph<T>& rhs);
+template <class T>
+bool operator!=(const graph<T>& lhs, const graph<T>& rhs);
 
 }
 

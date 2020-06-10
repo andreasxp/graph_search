@@ -123,7 +123,8 @@ std::size_t puff<T>::size_in_bytes() const noexcept {
 }
 
 template<class T>
-std::set<graph_match> puff<T>::search(const puff& other) const {
+template<class U, class F>
+std::set<graph_match> puff<T>::search(const puff<U>& other, F&& compare) const {
 	if (other.depth() > depth()) {
 		return {};
 	}
@@ -135,7 +136,16 @@ std::set<graph_match> puff<T>::search(const puff& other) const {
 
 		std::vector<std::future<graph_match>> matches;
 		for (auto&& j : sectors[other.depth() - 1]) {
-			matches.push_back(std::move(std::async(std::launch::async, &cluster<T>::search, &j, std::cref(i))));
+			matches.push_back(
+				std::move(
+					std::async(
+						std::launch::async,
+						[&j, &i, &compare]() {
+							return j.search(i, compare);
+						}
+					)
+				)
+			);
 		}
 
 		for (auto&& j : matches) {

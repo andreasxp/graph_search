@@ -16,7 +16,8 @@ public:
 	node_group<T, void> nodes;
 	flat_set<const cluster*, sector_lexicographical_order<T>> children;
 
-	graph_match search(const cluster& other) const;
+	template<class U, class F>
+	graph_match search(const cluster<U>& other, F&& compare = F()) const;
 	cluster& join_children(const cluster& other);
 	std::size_t size_in_bytes() const;
 
