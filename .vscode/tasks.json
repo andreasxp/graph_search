@@ -15,7 +15,7 @@
 		{
 			"label": "Launch",
 			"type": "shell",
-			"command": "start-process powershell -ArgumentList '${workspaceFolder}/build/bin/${workspaceFolderBasename}_fb_search.exe; pause'",
+			"command": "start-process powershell -ArgumentList '${workspaceFolder}/build/bin/${workspaceFolderBasename}_basic_usage2.exe; pause'",
 			"dependsOn": "Build",
 		}
 	]

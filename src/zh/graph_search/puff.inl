@@ -41,8 +41,6 @@ puff<T>::puff(const graph<T>& gr, std::size_t max_depth) {
 		sectors.front().emplace_back(nd);
 	}
 
-	std::cout << "1";
-
 	// Build level 2, if needed
 	if (max_depth > 1) {
 		// Create 2 levels, each holding same sectors but produced from
@@ -82,8 +80,6 @@ puff<T>::puff(const graph<T>& gr, std::size_t max_depth) {
 		sectors.emplace_back(std::move(new_level1));
 	}
 
-	std::cout << " 2";
-
 	// Build remaining levels using already built ones
 	level_builder<T> lb;
 	for (std::size_t level = 2; level < max_depth; level++) {
@@ -94,11 +90,7 @@ puff<T>::puff(const graph<T>& gr, std::size_t max_depth) {
 		sectors.emplace(sectors.end(),
 			std::move_iterator(lb.result().begin()),
 			std::move_iterator(lb.result().end()));
-		
-		std::cout << " " << level+1;
 	}
-
-	std::cout << "\n";
 
 	//std::cout << "Built a puff (max_depth: " << max_depth << ", levels: " << sectors.size() << ", depth at back(): " << sectors.back().size() << "): " << *this;
 }

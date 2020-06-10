@@ -4,14 +4,22 @@
 #include <fstream>
 #include <filesystem>
 #include <iomanip>
+#include <chrono>
 #include "zh/util/json.hpp"
 #include "zh/util/pretty_print.hpp"
 #include "graph_search.hpp"
+
 namespace fs = std::filesystem;
+namespace ch = std::chrono;
 
 template<class T, class U, class F = std::equal_to<void>>
 void test_search(const zh::graph<T>& graph1, const zh::graph<U>& graph2, F&& compare = F()) {
+	auto start = ch::steady_clock::now();
+	
 	auto mappings = search(graph1, graph2, compare);
+	
+	auto finish = ch::steady_clock::now();
+	ch::duration<double> time = finish - start;
 
 	std::cout
 		<< "= Graph info ===================================================================\n"
@@ -19,7 +27,7 @@ void test_search(const zh::graph<T>& graph1, const zh::graph<U>& graph2, F&& com
 		<< "graph 2: " << graph2 << "\n"
 		<< "\n"
 		<< "= Results ======================================================================\n"
-		<< "Answer: graph 1 " << (!mappings.empty() ? "contains" : "does not contain") << " graph 2\n";
+		<< "Answer (" << time.count() << "s): graph 1 "<< (!mappings.empty() ? "contains" : "does not contain") << " graph 2\n";
 
 	if (!mappings.empty()) {
 		std::cout << "Results:\n";
